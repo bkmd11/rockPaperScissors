@@ -3,6 +3,10 @@
 
 import random
 
+def add(a,b):
+    a+b=c
+    return(c)
+
 RPS=['rock','paper','scissors']     #list of choices
 
 I=0   #computer score
