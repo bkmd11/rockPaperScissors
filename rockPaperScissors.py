@@ -1,25 +1,25 @@
 #! python3
-#rock paper scissors
+# rock paper scissors
 
 import random
 
-maxGames=3
-RPS=['rock','paper','scissors']     
+maxGames = 3
+RPS = ['rock', 'paper', 'scissors']
 
-computerScore=0   
-playerScore=0  
-gameCount=0   
+computerScore = 0
+playerScore = 0
+gameCount = 0
 print('I challenge you to rock paper scissors, best 2 out of 3!')
-while gameCount < maxGames:    #loops for 3 rounds
+while gameCount < maxGames:  # loops for 3 rounds
     print('rock paper scissors!')
-    player=input()
-    computer=random.choice(RPS)
+    player = input()
+    computer = random.choice(RPS)
     print(computer)
-    if player==computer:
+    if player == computer:
         print('its a tie!')
-        gameCount -= 1   #makes sure there can be no tie at the end
+        gameCount -= 1  # makes sure there can be no tie at the end
 
-    #sets the rules of rock paper scissors and tracks wins    
+    # sets the rules of rock paper scissors and tracks wins
     elif player == 'rock':
         if computer == 'paper':
             print('I win!')
@@ -41,15 +41,15 @@ while gameCount < maxGames:    #loops for 3 rounds
         elif computer == 'paper':
             print('you win')
             playerScore += 1
-            
-    gameCount+=1
+
+    gameCount += 1
 print('I won {} games, and you won {} games'.format(computerScore, playerScore))
 if computerScore > playerScore:
     print('I beat you!')
 else:
     print('You are clearly very good at this game')
 
-#im basically a wizard
-            
+# im basically a wizard
+
 
 
