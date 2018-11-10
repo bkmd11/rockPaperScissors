@@ -3,6 +3,7 @@
 
 import random
 
+
 maxGames=3
 RPS=['rock','paper','scissors']     
 
@@ -43,6 +44,10 @@ while gameCount < maxGames:    #loops for 3 rounds
             playerScore += 1
             
     gameCount+=1
+    #if playerScore or computerScore == 2: 
+         #break
+        #still doesnt fucking work...
+    
 print('I won {} games, and you won {} games'.format(computerScore, playerScore))
 if computerScore > playerScore:
     print('I beat you!')
