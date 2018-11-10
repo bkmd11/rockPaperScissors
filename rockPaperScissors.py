@@ -3,6 +3,24 @@
 
 import random
 
+<<<<<<< HEAD
+=======
+def gameLogic(player, computer, playerScore, computerScore):
+    playerIndex = RPS.index(player)
+    computerIndex = RPS.index(computer)
+
+    gameIncrement = 0
+    if (playerIndex != computerIndex):
+        gameIncrement = 1
+        playerNextIndex = (playerIndex + 1) % len(RPS)
+        
+        if (playerNextIndex == computerIndex):
+            computerScore += 1
+        else:
+            playerScore += 1
+
+    return gameIncrement, playerScore, computerScore
+>>>>>>> 795877261138d3255d3b42d52da3fd811edad5f8
 
 maxGames=3
 RPS=['rock','paper','scissors']     
@@ -16,6 +34,7 @@ while gameCount < maxGames:    #loops for 3 rounds
     player=input()
     computer=random.choice(RPS)
     print(computer)
+<<<<<<< HEAD
     if player==computer:
         print('its a tie!')
         gameCount -= 1   #makes sure there can be no tie at the end
@@ -53,8 +72,25 @@ if computerScore > playerScore:
     print('I beat you!')
 else:
     print('You are clearly very good at this game')
+=======
+    gameIncrement, newComputerScore, newPlayerScore = gameLogic(computer, player, computerScore, playerScore)
+>>>>>>> 795877261138d3255d3b42d52da3fd811edad5f8
 
-#im basically a wizard
-            
+    if gameIncrement == 0:
+        print('It\'s a tie!')
+    else:
+        if newComputerScore > computerScore:
+            print('{0} beats {1}, you are a little bitch tit'.format(computer, player))
+        else:
+            print('apparently you win this time')
+    computerScore = newComputerScore
+    playerScore = newPlayerScore
+    gameCount += gameIncrement
 
+print('I won {} games and you won {}'.format(computerScore, playerScore))
+if computerScore > playerScore:
+    print('I beat you peasant, worship my awesomeness')
+else:
+    print('You beat me but you still suck at life and cant code for shit...')
 
+#im less a wizard and more of a hack
