@@ -3,8 +3,6 @@
 
 import random
 
-<<<<<<< HEAD
-=======
 def gameLogic(player, computer, playerScore, computerScore):
     playerIndex = RPS.index(player)
     computerIndex = RPS.index(computer)
@@ -20,7 +18,6 @@ def gameLogic(player, computer, playerScore, computerScore):
             playerScore += 1
 
     return gameIncrement, playerScore, computerScore
->>>>>>> 795877261138d3255d3b42d52da3fd811edad5f8
 
 maxGames=3
 RPS=['rock','paper','scissors']     
@@ -34,47 +31,7 @@ while gameCount < maxGames:    #loops for 3 rounds
     player=input()
     computer=random.choice(RPS)
     print(computer)
-<<<<<<< HEAD
-    if player==computer:
-        print('its a tie!')
-        gameCount -= 1   #makes sure there can be no tie at the end
-
-    #sets the rules of rock paper scissors and tracks wins    
-    elif player == 'rock':
-        if computer == 'paper':
-            print('I win!')
-            computerScore += 1
-        elif computer == 'scissors':
-            print('You win')
-            playerScore += 1
-    elif player == 'paper':
-        if computer == 'rock':
-            print('you win')
-            playerScore += 1
-        elif computer == 'scissors':
-            print('I win!')
-            computerScore += 1
-    elif player == 'scissors':
-        if computer == 'rock':
-            print('I win!')
-            computerScore += 1
-        elif computer == 'paper':
-            print('you win')
-            playerScore += 1
-            
-    gameCount+=1
-    #if playerScore or computerScore == 2: 
-         #break
-        #still doesnt fucking work...
-    
-print('I won {} games, and you won {} games'.format(computerScore, playerScore))
-if computerScore > playerScore:
-    print('I beat you!')
-else:
-    print('You are clearly very good at this game')
-=======
     gameIncrement, newComputerScore, newPlayerScore = gameLogic(computer, player, computerScore, playerScore)
->>>>>>> 795877261138d3255d3b42d52da3fd811edad5f8
 
     if gameIncrement == 0:
         print('It\'s a tie!')
