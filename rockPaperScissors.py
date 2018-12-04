@@ -3,6 +3,10 @@
 
 import random
 
+class gameState():
+    score = 0
+    choice = ''
+    
 def gameLogic(player1Choice, player2Choice):
     if player1Choice == player2Choice:
         return 0
@@ -16,39 +20,41 @@ def gameLogic(player1Choice, player2Choice):
 
 RPS = ['rock', 'paper', 'scissors']
 maxGames = 3
-computerScore = 0
-playerScore = 0
+player = gameState()
+computer = gameState()
 gameCount = 0
 
 print('I challenge you to rock paper scissors, best 2 out of 3!')
 
 while gameCount < maxGames:    #loops for 3 rounds
-    playerChoice = input('rock paper scissors! Make your choice:')
+    player.choice = input('rock paper scissors! Make your choice:')
     try:
-        playerChoiceIndex = RPS.index(playerChoice)
+        playerChoiceIndex = RPS.index(player.choice)
     except (ValueError):
-        print('Are you serious? The game is called "rock, paper, scissors"! Maybe try picking one of those, hmmmmmmm?')
+        print('''Are you serious? The game is called "rock, paper, scissors"!
+                Maybe try picking one of those, hmmmmmmm?''')
         continue
 
     computerChoiceIndex = random.randint(0, 2)
-    computerChoice = RPS[computerChoiceIndex]
-    print(computerChoice)
+    computer.choice = RPS[computerChoiceIndex]
+    print(computer.choice)
     winner = gameLogic(playerChoiceIndex, computerChoiceIndex)
 
     if winner == 0:
         print('It\'s a tie!')
     else:
         if winner == 2:
-            computerScore += 1
-            print('{0} beats {1}, you are a little bitch tit'.format(computerChoice, playerChoice))
+            computer.score += 1
+            print('{0} beats {1}, you are a little bitch tit'
+                  .format(computer.choice, player.choice))
         else:
-            playerScore += 1
+            player.score += 1
             print('apparently you win this time')
         gameCount += 1
 
-print('I won {} games and you won {}'.format(computerScore, playerScore))
+print('I won {} games and you won {}'.format(computer.score, player.score))
 
-if computerScore > playerScore:
+if computer.score > player.score:
     print('I beat you peasant, worship my awesomeness')
 else:
     print('You beat me but you still suck at life and cant code for shit...')
