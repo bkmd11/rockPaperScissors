@@ -1,42 +1,34 @@
 #! python3
 #rock paper scissors
 
-""" Still need to play around with changing the game score
-with my fancy shmancy class thingy...
-Might not actually need that as a method though, works as is.
-Also need to re add try/except stuff to check for a valid choice
-And eventually break the game early in the event of 2 wins
-but the wife is getting all worked up.
-
-
-Oh and I should eliminate my use of 'choice' because its part of the random function
-and that causes confusion...
-
-plus read pep8 for formating
+""" Im sure that I still have some absolute failures in my formatting
+that are clearly written out in pep 8 but I will figure that out
+eventually
 """
+
 import random
 
 class rps_game():
     
     # Initilize the players
-    def __init__(self, score, choice, index):
+    def __init__(self, score, selection, index):
         self.score = score
-        self.choice = choice
+        self.selection = selection
         self.index = index
 
     # Method to change score
-    def score_method(self, game_outcome):
-        if self == winner:
-            score += 1
-
+    def score_increase(self):
+        self.score += 1
+        return self.score
+    
     # Method for choice
     def make_choice(self):
-        self.choice = input('rock, paper scissors! Make your choice... ')
-        return self.choice
+        self.selection = input('rock, paper scissors! Make your choice... ')
+        return self.selection
     
     # Method for indexing
-    def choice_index(self, choice):
-        self.index = RPS.index(self.choice)
+    def choice_index(self, selection):
+        self.index = RPS.index(self.selection)
         return self.index
 
 # Determines which player wins based on an index of their choice   
@@ -62,24 +54,33 @@ print('I challenge you to rock paper scissors, best 2 out of 3!')
 
 while game_count < max_games:    #loops for 3 rounds
     player.make_choice()
-    player.choice_index(player.choice)
-    computer.choice = random.choice(RPS)
-    computer.choice_index(computer.choice)
+    try:
+        player.choice_index(player.selection)
+    except (ValueError):
+        print('Fool, its rock paper scissors. Those are your only choices!')
+        continue
+        
+    computer.selection = random.choice(RPS)
+    computer.choice_index(computer.selection)
     
-    print(computer.choice)
+    print(computer.selection)
     winner = game_logic(player.index, computer.index)
 
     if winner == 0:
         print('It\'s a tie!')
     else:
         if winner == 2:
-            computer.score += 1
+            computer.score_increase()
             print('{0} beats {1}, you are a little bitch tit'
-                  .format(computer.choice, player.choice))
+                  .format(computer.selection, player.selection))
         else:
-            player.score += 1
+            player.score_increase()
             print('apparently you win this time')
         game_count += 1
+
+    #breaks if a player wins two games
+    if player.score or computer.score == 2:
+        break
 
 print('I won {} games and you won {}'.format(computer.score, player.score))
 
@@ -88,4 +89,4 @@ if computer.score > player.score:
 else:
     print('You beat me but you still suck at life and cant code for shit...')
 
-#im less a wizard and more of a hack
+# I'm less a wizard with a little class
