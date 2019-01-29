@@ -66,8 +66,7 @@ try:
 except (FileNotFoundError):
     game_stats = {'player': 0, 'computer': 0, 'rock': 0, 'paper': 0,
                   'scissors': 0}
-    with open('game_stats.json', 'w') as game_statistics:
-        json.dump(game_stats, game_statistics)
+    json.dumps(game_stats)
     
         
 # Main body of game
