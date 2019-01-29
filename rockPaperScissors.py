@@ -59,10 +59,17 @@ player = rps_game(0, '', '')
 computer = rps_game(0, '', '')
 game_count = 0
 
-# Pulls in my stored game statistics
-with open('game_stats.json','r') as game_statistics:
-    game_stats = json.load(game_statistics)
+# Pulls in my stored game statistics, if no json file exists, it creates one
+try:
+    with open('game_stats.json','r') as game_statistics:
+        game_stats = json.load(game_statistics)
+except (FileNotFoundError):
+    game_stats = {'player': 0, 'computer': 0, 'rock': 0, 'paper': 0,
+                  'scissors': 0}
+    with open('game_stats.json', 'w') as game_statistics:
+        json.dump(game_stats, game_statistics)
     
+        
 # Main body of game
 print('I challenge you to rock paper scissors, best 2 out of 3!')
     
